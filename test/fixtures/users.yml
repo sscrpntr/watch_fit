@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wrist_circumference: 9.99
+  size_preference: MyString
+  style_preference: MyString
+  budget: 9.99
+  bracelet_preference: MyString
+
+two:
+  wrist_circumference: 9.99
+  size_preference: MyString
+  style_preference: MyString
+  budget: 9.99
+  bracelet_preference: MyString

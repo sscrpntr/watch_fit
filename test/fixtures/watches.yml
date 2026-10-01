@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: MyString
+  model: MyString
+  reference: MyString
+  diameter: 9.99
+  lug_to_lug: 9.99
+  thickness: 9.99
+  watch_type: MyString
+  price: 9.99
+
+two:
+  brand: MyString
+  model: MyString
+  reference: MyString
+  diameter: 9.99
+  lug_to_lug: 9.99
+  thickness: 9.99
+  watch_type: MyString
+  price: 9.99

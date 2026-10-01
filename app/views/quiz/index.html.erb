@@ -1,0 +1,38 @@
+<h1>Find the watch that fits your wrist</h1>
+
+<p>Tell us a little about your wrist and your preferred watch size.</p>
+
+<%= form_with url: "/quiz", method: :post, data: { turbo: false } do |form| %>
+
+  <div>
+    <%= form.label :wrist_circumference, "What is your wrist circumference?" %>
+    <%= form.number_field :wrist_circumference, step: 0.1, min: 10, max: 30 %>
+    <span>cm</span>
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.label :size_preference, "What size do you prefer?" %>
+
+    <div>
+      <%= form.radio_button :size_preference, "compact" %>
+      <%= form.label :size_preference_compact, "Compact" %>
+    </div>
+
+    <div>
+      <%= form.radio_button :size_preference, "balanced" %>
+      <%= form.label :size_preference_balanced, "Balanced" %>
+    </div>
+
+    <div>
+      <%= form.radio_button :size_preference, "bold" %>
+      <%= form.label :size_preference_bold, "Bold" %>
+    </div>
+  </div>
+
+  <br>
+
+  <%= form.submit "Find my watch" %>
+
+<% end %>
