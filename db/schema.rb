@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_01_161029) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_02_143427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_01_161029) do
     t.string "bracelet_preference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "style_preferences", default: [], null: false, array: true
+    t.string "bracelet_preferences", default: [], null: false, array: true
   end
 
   create_table "watches", force: :cascade do |t|
@@ -35,5 +37,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_01_161029) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "styles", default: [], null: false, array: true
+    t.string "bracelet_types", default: [], null: false, array: true
   end
 end

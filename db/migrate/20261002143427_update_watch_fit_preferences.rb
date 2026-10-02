@@ -1,5 +1,3 @@
-require "application_system_test_case"
-
 class UpdateWatchFitPreferences < ActiveRecord::Migration[8.1]
   def change
     add_column :users, :style_preferences, :string, array: true, default: [], null: false

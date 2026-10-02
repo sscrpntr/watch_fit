@@ -85,23 +85,23 @@ class WatchFitCalculator
   end
 
   def proportion_score
-  ratio = @watch.lug_to_lug / @watch.diameter
+    ratio = @watch.lug_to_lug / @watch.diameter
 
-  case ratio
-  when 1.15..1.20
-    100
-  when 1.20..1.23
-    95
-  when 1.23..1.26
-    90
-  when 1.26..1.29
-    82
-  when 1.29..1.32
-    72
-  else
-    60
+    case ratio
+    when 1.15..1.20
+      100
+    when 1.20..1.23
+      95
+    when 1.23..1.26
+      90
+    when 1.26..1.29
+      82
+    when 1.29..1.32
+      72
+    else
+      60
+    end
   end
-end
 
   def physical_fit_score
     (
@@ -112,35 +112,57 @@ end
     ).round
   end
 
-    def size_preference_modifier
+  def size_preference_score
+    target_diameter = @user.wrist_circumference * 2.3
+    difference = @watch.diameter - target_diameter
+
     case @user.size_preference
     when "compact"
-      size_modifier(1.00, 0.98, 0.95, 0.90, 0.80)
+      if difference <= 0
+        100
+      elsif difference <= 1
+        95
+      elsif difference <= 2
+        85
+      elsif difference <= 3
+        70
+      elsif difference <= 4
+        55
+      else
+        40
+      end
     when "balanced"
-      size_modifier(1.00, 0.98, 0.94, 0.88, 0.78)
+      absolute_difference = difference.abs
+
+      if absolute_difference <= 1
+        100
+      elsif absolute_difference <= 2
+        95
+      elsif absolute_difference <= 3
+        85
+      elsif absolute_difference <= 4
+        70
+      elsif absolute_difference <= 5
+        55
+      else
+        40
+      end
     when "bold"
-      size_modifier(1.00, 1.00, 0.98, 0.92, 0.80)
+      if difference >= 0
+        100
+      elsif difference >= -1
+        95
+      elsif difference >= -2
+        85
+      elsif difference >= -3
+        70
+      elsif difference >= -4
+        55
+      else
+        40
+      end
     else
-      1.00
+      100
     end
-  end
-
-    def size_modifier(excellent, good, fair, low, poor)
-    case physical_fit_score
-    when 90..100
-      excellent
-    when 80..89
-      good
-    when 70..79
-      fair
-    when 60..69
-      low
-    else
-      poor
-    end
-  end
-
-    def size_preference_score
-    (physical_fit_score * size_preference_modifier).round
   end
 end
